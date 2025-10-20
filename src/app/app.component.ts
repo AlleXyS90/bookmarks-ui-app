@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { getListAction } from './store/bookmarks/actions';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +11,12 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'bookmark-app';
+
+  private readonly store = inject(Store);
+
+  constructor() {
+    // should be moved in bookmarks router reducer
+    this.store.dispatch(getListAction());
+  }
+  
 }
