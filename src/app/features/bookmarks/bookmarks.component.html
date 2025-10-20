@@ -1,13 +1,4 @@
-<mat-toolbar class="toolbar">
-  <span class="toolbar-title">Bookmarker</span>
-  <span class="spacer"></span>
-  <mat-form-field appearance="outline">
-    <mat-icon matPrefix>search</mat-icon>
-    <input matInput placeholder="Filter bookmarks" />
-  </mat-form-field>
-  <span class="spacer"></span>
-  <mat-icon>add</mat-icon>
-</mat-toolbar>
+<app-toolbar />
 
 <div class="content">
   <div class="item" *ngFor="let bookmark of bookmarks$ | async">
@@ -15,6 +6,7 @@
     <div class="item__details">
       <span>{{ bookmark.title }}</span>
       <a [href]="bookmark.url">{{ bookmark.url }}</a>
+      <span>{{bookmark.date | date : "MMM dd, yyyy"}}</span>
     </div>
     <mat-icon (click)="edit(bookmark.id)">edit</mat-icon>
   </div>

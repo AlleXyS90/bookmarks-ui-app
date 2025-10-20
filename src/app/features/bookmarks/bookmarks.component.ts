@@ -1,28 +1,25 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl } from '@angular/forms';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe, DatePipe, NgFor } from '@angular/common';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Bookmark } from '../../models/bookmarks/bookmark';
 import { BookmarksService } from '../../api/bookmarks.service';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { AppState } from '../../store';
 import * as fromBookmarks from '../../store/bookmarks';
 
 @Component({
-  standalone: true,
   selector: 'app-bookmarks',
+  standalone: true,
   imports: [
     AsyncPipe,
-    MatToolbarModule,
+    DatePipe,
     MatIconModule,
-    MatInputModule,
-    MatFormFieldModule,
     NgFor,
+    ToolbarComponent
   ],
   templateUrl: './bookmarks.component.html',
   styleUrl: './bookmarks.component.scss',
