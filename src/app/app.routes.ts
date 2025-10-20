@@ -3,9 +3,9 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'bookmarks',
-    loadComponent: () =>
-      import('./features/bookmarks/bookmarks.component').then(
-        (m) => m.BookmarksComponent,
+    loadChildren: () =>
+      import('./features/bookmarks/bookmarks.routes').then(
+        (m) => m.BookmarkRoutes,
       ),
   },
   {

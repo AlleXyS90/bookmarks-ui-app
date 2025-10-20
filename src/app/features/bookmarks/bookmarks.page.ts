@@ -27,10 +27,10 @@ import * as fromBookmarks from '../../store/bookmarks';
     NgFor,
     ToolbarComponent,
   ],
-  templateUrl: './bookmarks.component.html',
-  styleUrl: './bookmarks.component.scss',
+  templateUrl: './bookmarks.page.html',
+  styleUrl: './bookmarks.page.scss',
 })
-export class BookmarksComponent implements OnInit {
+export class BookmarksPage implements OnInit {
 
   private readonly store = inject(Store<AppState>);
 
