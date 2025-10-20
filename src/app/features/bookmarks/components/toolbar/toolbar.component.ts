@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,6 +10,7 @@ import { debounceTime, distinctUntilChanged, startWith } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { getListAction } from '../../../../store/bookmarks/actions';
+import { Routes } from '../../../../_shared/routes';
 
 @UntilDestroy()
 @Component({
@@ -19,12 +21,14 @@ import { getListAction } from '../../../../store/bookmarks/actions';
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule,
-  ],
+    MatIconModule
+],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss',
 })
 export class ToolbarComponent implements OnInit {
+
+  private readonly router = inject(Router);
   private readonly store = inject(Store);
 
   filterFormControl = new FormControl('');
@@ -42,5 +46,10 @@ export class ToolbarComponent implements OnInit {
           getListAction({ keyword: value?.toLowerCase() || '' }),
         );
       });
+  }
+
+  goToAdd(): void {
+    console.log('go to add')
+    this.router.navigateByUrl(Routes.bookmarks.create)
   }
 }

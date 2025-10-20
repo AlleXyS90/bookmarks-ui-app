@@ -1,16 +1,3 @@
 <app-toolbar />
 
-<div class="content">
-  <div *ngFor="let group of bookmarks$ | async | keyvalue: groupOrder">
-    <h3>{{ group.key }}</h3>
-    <div class="item" *ngFor="let bookmark of group.value">
-      <mat-icon class="item__icon">bookmark</mat-icon>
-      <div class="item__details">
-        <span>{{ bookmark.title }}</span>
-        <a [href]="bookmark.url">{{ bookmark.url }}</a>
-        <span>{{ bookmark.date | date: "MMM dd, yyyy" }}</span>
-      </div>
-      <mat-icon class="item__icon" (click)="edit(bookmark.id)">edit</mat-icon>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>

@@ -43,4 +43,9 @@ export class BookmarksService {
     const queryUrl = `${this.apiUrl}/bookmarks/${id}`;
     return this.http.get<Bookmark>(queryUrl, this.httpOptions);
   }
+
+  public add(bookmark: Bookmark): Observable<Bookmark> {
+    const queryUrl = `${this.apiUrl}/bookmarks`;
+    return this.http.post<Bookmark>(queryUrl, bookmark, this.httpOptions);
+  }
 }
