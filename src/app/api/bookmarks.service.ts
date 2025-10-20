@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Bookmark } from '../models/bookmarks/bookmark';
 
 @Injectable({
@@ -18,8 +18,25 @@ export class BookmarksService {
   constructor(private http: HttpClient) {}
 
   public getFiltered(keyword: string): Observable<Bookmark[]> {
-    const queryUrl = `${this.apiUrl}/bookmarks`;
-    return this.http.get<Bookmark[]>(queryUrl, this.httpOptions);
+    let queryUrl = `${this.apiUrl}/bookmarks`;
+
+    // apply filters
+    // if (keyword) {
+    //   queryUrl += `?title_like=${keyword}`;
+    // }
+
+    // issue: json-server {field}_like is ignored - can not apply filtering
+
+    return this.http.get<Bookmark[]>(queryUrl, this.httpOptions).pipe(
+      map((items) => {
+        // apply filters to the response, as a temporary fix
+        if (!keyword) {
+          return items;
+        }
+
+        return items.filter((x) => x.title.toLowerCase().includes(keyword));
+      }),
+    );
   }
 
   public getById(id: number): Observable<Bookmark> {

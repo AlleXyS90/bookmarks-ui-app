@@ -3,7 +3,7 @@
   <span class="spacer"></span>
   <mat-form-field appearance="outline">
     <mat-icon matPrefix>search</mat-icon>
-    <input matInput placeholder="Filter bookmarks" />
+    <input [formControl]="filterFormControl" matInput placeholder="Filter bookmarks" />
   </mat-form-field>
   <span class="spacer"></span>
   <mat-icon>add</mat-icon>

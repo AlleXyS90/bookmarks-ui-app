@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { FormControl } from '@angular/forms';
 import {
   AsyncPipe,
   DatePipe,
@@ -32,7 +31,6 @@ import * as fromBookmarks from '../../store/bookmarks';
   styleUrl: './bookmarks.component.scss',
 })
 export class BookmarksComponent implements OnInit {
-  filterFormControl = new FormControl('');
 
   private readonly store = inject(Store<AppState>);
 

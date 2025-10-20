@@ -7,7 +7,10 @@ export enum ActionTypes {
   GET_LIST_FAILED = '[Bookmarks] Get list failed',
 }
 
-export const getListAction = createAction(ActionTypes.GET_LIST);
+export const getListAction = createAction(
+  ActionTypes.GET_LIST,
+  props<{ keyword: string }>(),
+);
 
 export const getListSuccessAction = createAction(
   ActionTypes.GET_LIST_SUCCESS,

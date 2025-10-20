@@ -17,7 +17,7 @@ export class AppComponent {
 
   constructor() {
     // should be moved in bookmarks router reducer
-    this.store.dispatch(getListAction());
+    this.store.dispatch(getListAction({keyword: ''}));
   }
   
 }

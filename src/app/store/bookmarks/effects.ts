@@ -17,10 +17,10 @@ export class BookmarksEffects {
   getList$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getListAction),
-      switchMap(() =>
-        this.bookmarksService.getFiltered('').pipe(
+      switchMap((payload) =>
+        this.bookmarksService.getFiltered(payload.keyword).pipe(
           map((bookmarks) => getListSuccessAction({ bookmarks })),
-          catchError((error) => of(getListFailedAction(error.message))),
+          catchError((error) => of(getListFailedAction(error.message || 'Something went wrong!'))),
         ),
       ),
     ),
@@ -30,7 +30,7 @@ export class BookmarksEffects {
     () =>
       this.actions$.pipe(
         ofType(getListFailedAction),
-        tap((payload) => console.error(payload.msg)),
+        tap((payload) => console.error(payload?.msg)),
       ),
     { dispatch: false },
   );
