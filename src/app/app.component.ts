@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
+
 import { getListAction } from './store/bookmarks/actions';
 
 @Component({

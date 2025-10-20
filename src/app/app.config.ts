@@ -1,16 +1,19 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 
 import { routes } from './app.routes';
-import { provideStore } from '@ngrx/store';
-import { provideHttpClient } from '@angular/common/http';
-import { reducer } from './store/bookmarks/reducer';
+import { appReducers } from './store';
+import { BookmarksEffects } from './store/bookmarks';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideStore({ reducer: reducer }),
+    provideStore(appReducers),
+    provideEffects([BookmarksEffects]),
     provideHttpClient(),
   ],
 };

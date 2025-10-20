@@ -5,10 +5,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl } from '@angular/forms';
 import { AsyncPipe, NgFor } from '@angular/common';
-import { BookmarksService } from '../../api/bookmarks.service';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Bookmark } from '../../models/bookmarks/bookmark';
+import { BookmarksService } from '../../api/bookmarks.service';
+import { AppState } from '../../store';
+import * as fromBookmarks from '../../store/bookmarks';
 
 @Component({
   standalone: true,
@@ -28,8 +31,9 @@ export class BookmarksComponent implements OnInit {
   filterFormControl = new FormControl('');
 
   private readonly service = inject(BookmarksService);
+  private readonly store = inject(Store<AppState>);
 
-  bookmarks$: Observable<Bookmark[]> = this.service.getFiltered('');
+  bookmarks$: Observable<Bookmark[]> = this.store.pipe(select(fromBookmarks.selectBookmarks));
 
   ngOnInit(): void {
   }
