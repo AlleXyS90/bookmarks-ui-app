@@ -1,3 +1,8 @@
+
+h3 {
+  font-weight: 500;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -9,7 +14,17 @@
 .item {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  &__icon {
+    color: #929194;
+
+    &:hover {
+      cursor: pointer;
+      color: #000;
+    }
+  }
 
   &__details {
     display: flex;
