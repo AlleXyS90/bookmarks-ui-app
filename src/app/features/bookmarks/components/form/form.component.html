@@ -1,0 +1,38 @@
+<form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+      <mat-error *ngIf="title.hasError('required')"
+        >Title is required</mat-error
+      >
+      <mat-error *ngIf="title.hasError('minlength')"
+        >Min 2 characters</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>URL</mat-label>
+      <input
+        matInput
+        formControlName="url"
+        type="url"
+        placeholder="https://example.com"
+      />
+      <mat-error *ngIf="url.hasError('required')"
+        >URL is required</mat-error
+      >
+      <mat-error *ngIf="url.hasError('url')">Enter a valid URL</mat-error>
+    </mat-form-field>
+
+    <div class="actions">
+      <button
+        (click)="submit()"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        {{buttonLabel}}
+      </button>
+    </div>
+  </form>
