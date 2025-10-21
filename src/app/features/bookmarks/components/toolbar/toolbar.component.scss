@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   background-color: #161215;
-  padding: 8px;
+  padding: 0 24px;
 }
 
 .toolbar-title {
@@ -10,6 +10,30 @@
   font-size: 20px;
   white-space: nowrap;
   color: #fff;
+}
+
+.filter-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px 8px;
+  width: 220px;
+}
+
+.filter-wrapper mat-icon {
+  color: gray;
+  font-size: 20px;
+  margin-right: 4px;
+}
+
+.filter-wrapper input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  background-color: #1e1e1e;
+  color: #f1f1f1;
 }
 
 .spacer {

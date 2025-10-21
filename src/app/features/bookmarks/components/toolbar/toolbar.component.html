@@ -1,14 +1,14 @@
 <mat-toolbar class="toolbar">
   <a [href]="'./bookmarks'"><span class="toolbar-title">Bookmarker</span></a>
   <span class="spacer"></span>
-  <mat-form-field appearance="outline">
-    <mat-icon matPrefix>search</mat-icon>
+  <div class="filter-wrapper">
+    <mat-icon>search</mat-icon>
     <input
+      type="text"
       [formControl]="filterFormControl"
-      matInput
       placeholder="Filter bookmarks"
     />
-  </mat-form-field>
+  </div>
   <span class="spacer"></span>
   <mat-icon (click)="goToAdd()">add</mat-icon>
 </mat-toolbar>
