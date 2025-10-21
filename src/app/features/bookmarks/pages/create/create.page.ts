@@ -7,7 +7,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Routes } from '../../../../_shared/routes';
 import { NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 
@@ -62,9 +61,5 @@ export class CreatePage {
     };
     this.store.dispatch(addAction({ bookmark: bookmark }));
     this.form.reset();
-  }
-
-  add(): void {
-    this.router.navigateByUrl(Routes.bookmarks.root);
   }
 }

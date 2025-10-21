@@ -1,4 +1,5 @@
 import { Component, Inject, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import {
   AsyncPipe,
@@ -14,6 +15,7 @@ import { Bookmark } from '../../../../models/bookmarks/bookmark';
 import { isSameDay, toDate } from '../../../../_shared/utils';
 import { AppState } from '../../../../store';
 import * as fromBookmarks from '../../../../store/bookmarks';
+import { Routes } from '../../../../_shared/routes';
 
 @Component({
   selector: 'app-list',
@@ -30,6 +32,7 @@ import * as fromBookmarks from '../../../../store/bookmarks';
 })
 export class ListPage {
   private readonly store = inject(Store<AppState>);
+  private readonly router = inject(Router);
 
   // It's not really applicable for such small data,
   // but to exemplify, I used Map instead of defined object or simply array
@@ -72,7 +75,9 @@ export class ListPage {
     return ordered;
   }
 
-  edit(id: number): void {}
+  edit(id: number): void {
+    this.router.navigateByUrl(Routes.bookmarks.edit(id));
+  }
 
   groupOrder = (
     a: KeyValue<string, unknown>,

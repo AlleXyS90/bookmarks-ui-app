@@ -14,6 +14,11 @@ export const BookmarkRoutes = [
         loadComponent: () =>
           import('./pages/create/create.page').then((m) => m.CreatePage),
       },
+      {
+        path: 'edit/:id',
+        loadComponent: () =>
+          import('./pages/edit/edit.page').then((m) => m.EditPage),
+      },
     ],
   },
 ];
